@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addContacts,getContacts } from "../../actions/contactAction";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getContacts, updateContact } from "../../actions/contactAction";
 import shortid from "shortid";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -13,18 +13,28 @@ const EditContact = () => {
   const [email, setEmail] = useState("");
 
   const dispatch = useDispatch();
+  const contact = useSelector(state => state.contacts.editContact)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userData = {
-      id: shortid.generate(),
-      name,
-      phone,
-      email,
-    };
-    dispatch(addContacts(userData));
+    const userData = Object.assign(contact,{
+        name,
+        phone,
+        email,
+      });
+      console.log(userData);
+    dispatch(updateContact(userData));
     navigate("/");
   };
+
+  useEffect(() => {
+      if(contact != null){
+          setName(contact.name)
+          setEmail(contact.email)
+          setPhone(contact.phone)
+      }
+      dispatch(getContacts(id))
+  }, [contact])
   return (
     <div className="card">
       <div className="card-header">Edit Contact</div>
@@ -53,17 +63,15 @@ const EditContact = () => {
           <div className="mb-3">
             <label className="form-label">Phone</label>
             <input
-              type="number"
-              min="10"
-              max="10"
+              type="text"
               className="form-control"
               value={phone}
               required
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Create
+          <button type="submit" className="btn btn-warning">
+            Update Contact
           </button>
         </form>
       </div>

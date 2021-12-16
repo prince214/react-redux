@@ -51,9 +51,7 @@ const AddContacts = () => {
           <div className="mb-3">
             <label className="form-label">Phone</label>
             <input
-              type="number"
-              min="10"
-              max="10"
+              type="text"
               className="form-control"
               value={phone}
               required
