@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getContacts, updateContact } from "../../actions/contactAction";
-import shortid from "shortid";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
