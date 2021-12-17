@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../actions/contactAction";
+import Avatar from "react-avatar";
 
 const UserRow = ({ user, selectAll }) => {
   const dispatch = useDispatch();
@@ -18,22 +19,16 @@ const UserRow = ({ user, selectAll }) => {
         </div>
       </th>
       <td>
-        <img src={user.picture} alt="user img" />
+        <Avatar name={user.name} size="45" round={true} />
       </td>
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td>{user.phone}</td>
       <td>
-        <Link to={`/contact/edit/${user.id}`} className="btn btn-primary me-2">
-          Edit
+        <Link to={`/contact/edit/${user.id}`}>
+        <i class="material-icons">edit</i>
         </Link>
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={() => handleDeleteContact(user.id)}
-        >
-          Remove
-        </button>
+        <i class="material-icons text-danger" onClick={() => handleDeleteContact(user.id)}>delete</i>
       </td>
     </tr>
   );
