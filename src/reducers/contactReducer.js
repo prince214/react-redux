@@ -134,7 +134,7 @@ export const contactReducer = (state = initialState, action) => {
     case SELECT_CONTACT:
       return {
         ...state,
-        selectedContacts: action.payload
+        selectedContacts: [...state.selectedContacts,...action.payload]
       };
     case CLEAR_CONTACT:
       return {
@@ -144,7 +144,7 @@ export const contactReducer = (state = initialState, action) => {
     case DELETE_SELECTED_CONTACT:
        return {
          ...state,
-         contacts: []
+         contacts: state.contacts.filter((contact) => !state.selectedContacts.includes(contact.id))
        }
     default:
       return state;

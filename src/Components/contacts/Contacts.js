@@ -22,7 +22,7 @@ const Contacts = () => {
   return (
     <div>
       {selectedContacts.length > 0 && (
-        <button type="button" className="btn btn-danger" onClick={() => dispatch(deleteSelectedContact())}>Delete All</button>
+        <button type="button" className="btn btn-danger" onClick={() => dispatch(deleteSelectedContact())}>Delete Selected</button>
       )} 
       <table className="table shadow">
         <thead>
@@ -32,7 +32,6 @@ const Contacts = () => {
                   onClick={() => setSelectAll(!selectAll)} />
                 <label className="custom-control-label"></label>
             </th>
-            <th scope="col">Avatar</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
