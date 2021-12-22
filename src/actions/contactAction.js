@@ -7,8 +7,6 @@ import {
   UPDATE_CONTACT,
   DELETE_SELECTED_CONTACT,
 } from "../constants/type";
-import axios from "axios";
-import { toast } from 'react-toastify';
 
 export const addContacts = (contact) => ({
   type: CREATE_CONTACT,

@@ -3,9 +3,10 @@ import shortid from "shortid";
 import { createPost } from "../../actions/postAction";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const AddPost = () => {
-  let history = useNavigate();
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -19,7 +20,8 @@ const AddPost = () => {
     };
 
     dispatch(createPost(new_post));
-    history.push("/");
+    toast('Post added successfully !!')
+    navigate("/allPosts");
   };
   return (
     <div className="container">
@@ -28,7 +30,7 @@ const AddPost = () => {
           <div className="card-header">Add A Post</div>
           <div className="card-body">
             <form onSubmit={submitForm}>
-              <div className="form-group">
+              <div className="form-group mb-2">
                 <input
                   type="text"
                   className="form-control form-control-lg"
@@ -37,7 +39,7 @@ const AddPost = () => {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group mb-2">
                 <textarea
                   rows="5"
                   className="form-control form-control-lg"

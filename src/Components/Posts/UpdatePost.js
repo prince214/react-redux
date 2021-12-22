@@ -4,7 +4,7 @@ import { getPost, updatePost } from "../../actions/postAction";
 import { useParams, useNavigate } from "react-router-dom";
 
 const UpdatePost = () => {
-  let history = useNavigate();
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const post = useSelector((state) => state.post.post);
   const { id } = useParams();
@@ -33,7 +33,7 @@ const UpdatePost = () => {
     };
 
     dispatch(updatePost(update_post));
-    history.push("/");
+    navigate("/allPosts");
   };
   return (
     <div className="container">
@@ -42,7 +42,7 @@ const UpdatePost = () => {
           <div className="card-header">Update A Post</div>
           <div className="card-body">
             <form onSubmit={submitForm}>
-              <div className="form-group">
+              <div className="form-group mb-2">
                 <input
                   type="text"
                   className="form-control form-control-lg"
@@ -51,7 +51,7 @@ const UpdatePost = () => {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group mb-2">
                 <textarea
                   rows="5"
                   className="form-control form-control-lg"

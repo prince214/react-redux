@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 import EllipsisText from "react-ellipsis-text";
 const PostCard = ({ postItem }) => {
-  console.log(postItem);
   const dispatch = useDispatch();
   return (
     <div className="col-lg-3 col-md-6 mb-4">
