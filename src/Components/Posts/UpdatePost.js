@@ -11,6 +11,7 @@ const UpdatePost = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  console.log(post);
   useEffect(() => {
     loadPost();
   }, []);

@@ -29,10 +29,10 @@ function App() {
             <Route path="/contact/edit/:id" element={<EditContact />} />
             <Route path="/allPosts" element={<Posts />} />
 
-            <Route exact path="/allPosts" component={Posts} />
-            <Route exact path="/addPost" component={AddPost} />
-            <Route exact path="/post/:id" component={Post} />
-            <Route exact path="/updatePost/:id" component={UpdatePost} />
+            <Route exact path="/allPosts" element={<Posts />} />
+            <Route exact path="/addPost" element={<AddPost />} />
+            <Route exact path="/post/:id" element={<Post />} />
+            <Route exact path="/updatePost/:id" element={<UpdatePost />} />
           </Routes>
         </div>
         <ToastContainer />

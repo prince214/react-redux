@@ -8,7 +8,7 @@ const Posts = () => {
   return (
     <div className="row">
       {posts.map((postItem) => (
-        <PostCard postItem={postItem} />
+        <PostCard key={postItem.id} postItem={postItem} />
       ))}
     </div>
   );
