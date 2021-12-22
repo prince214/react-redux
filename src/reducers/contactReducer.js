@@ -1,4 +1,12 @@
-import { CLEAR_CONTACT, CREATE_CONTACT, DELETE_CONTACT, DELETE_SELECTED_CONTACT, GET_CONTACT, SELECT_CONTACT, UPDATE_CONTACT } from "../constants/type";
+import {
+  CLEAR_CONTACT,
+  CREATE_CONTACT,
+  DELETE_CONTACT,
+  DELETE_SELECTED_CONTACT,
+  GET_CONTACT,
+  SELECT_CONTACT,
+  UPDATE_CONTACT
+} from "../constants/type";
 
 const initialState = {
   contacts: [
@@ -102,7 +110,8 @@ const initialState = {
     },
   ],
   editContact: null,
-  selectedContacts: []
+  selectedContacts: [],
+  loading: false,
 };
 
 //actions
@@ -114,9 +123,9 @@ export const contactReducer = (state = initialState, action) => {
         contacts: [action.payload, ...state.contacts],
       };
     case GET_CONTACT:
-      let arr = state.contacts.filter((user) => user.id === action.payload)
+      let arr = state.contacts.filter((user) => user.id === action.payload);
       arr = arr.values();
-      for(let val of arr) arr = val
+      for (let val of arr) arr = val;
       return {
         ...state,
         editContact: arr,
@@ -124,28 +133,34 @@ export const contactReducer = (state = initialState, action) => {
     case UPDATE_CONTACT:
       return {
         ...state,
-        contacts: state.contacts.map((contact) => contact.id === action.payload.id ? action.payload : contact)
+        contacts: state.contacts.map((contact) =>
+          contact.id === action.payload.id ? action.payload : contact
+        ),
       };
     case DELETE_CONTACT:
       return {
-      ...state,
-      contacts: state.contacts.filter((contact) => contact.id !== action.payload)
-    };
+        ...state,
+        contacts: state.contacts.filter(
+          (contact) => contact.id !== action.payload
+        ),
+      };
     case SELECT_CONTACT:
       return {
         ...state,
-        selectedContacts: [...state.selectedContacts,...action.payload]
+        selectedContacts: [...state.selectedContacts, ...action.payload],
       };
     case CLEAR_CONTACT:
       return {
         ...state,
-        selectedContacts: []
-      }
+        selectedContacts: [],
+      };
     case DELETE_SELECTED_CONTACT:
-       return {
-         ...state,
-         contacts: state.contacts.filter((contact) => !state.selectedContacts.includes(contact.id))
-       }
+      return {
+        ...state,
+        contacts: state.contacts.filter(
+          (contact) => !state.selectedContacts.includes(contact.id)
+        ),
+      };
     default:
       return state;
   }

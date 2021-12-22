@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllContact, clearSelectedContact,deleteContact } from "../../actions/contactAction";
+import { selectAllContact, deleteContact } from "../../actions/contactAction";
 import Avatar from "react-avatar";
 
 const UserRow = ({ user, selectAll }) => {

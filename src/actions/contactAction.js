@@ -1,4 +1,14 @@
-import { CLEAR_CONTACT, CREATE_CONTACT, DELETE_CONTACT, GET_CONTACT, SELECT_CONTACT, UPDATE_CONTACT, DELETE_SELECTED_CONTACT } from "../constants/type";
+import {
+  CLEAR_CONTACT,
+  CREATE_CONTACT,
+  DELETE_CONTACT,
+  GET_CONTACT,
+  SELECT_CONTACT,
+  UPDATE_CONTACT,
+  DELETE_SELECTED_CONTACT,
+} from "../constants/type";
+import axios from "axios";
+import { toast } from 'react-toastify';
 
 export const addContacts = (contact) => ({
   type: CREATE_CONTACT,
@@ -32,4 +42,3 @@ export const clearSelectedContact = () => ({
 export const deleteSelectedContact = () => ({
   type: DELETE_SELECTED_CONTACT,
 });
-
